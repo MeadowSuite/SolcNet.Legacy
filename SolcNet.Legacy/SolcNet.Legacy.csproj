@@ -27,7 +27,7 @@
 
   <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
     <ItemGroup>
-      <_PackageFiles Include="$(OutputPath)/Native/**/*">
+      <_PackageFiles Include="$(OutputPath)/native/**/*">
         <BuildAction>Content</BuildAction>
         <PackagePath>content/native/</PackagePath>
       </_PackageFiles>
@@ -35,7 +35,7 @@
   </Target>
 
   <ItemGroup>
-    <None Update="Native\**\*">
+    <None Update="native\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

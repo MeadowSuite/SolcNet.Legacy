@@ -86,7 +86,7 @@ namespace SolcNet.Legacy
         static IEnumerable<string> SearchContainerPaths(string containerDir, string version, string library, (string LibPrefix, string Extension) platform)
         {
             yield return Path.Combine(containerDir, version, platform.LibPrefix + library + platform.Extension);
-            yield return Path.Combine(containerDir, "Native", version, platform.LibPrefix + library + platform.Extension);
+            yield return Path.Combine(containerDir, "native", version, platform.LibPrefix + library + platform.Extension);
         }
 
 
