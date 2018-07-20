@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <Company>Hosho</Company>
+    <Authors>Hosho</Authors>
+    <PackageTags>solidity solc libsolc ethereum</PackageTags>
+    <Description>Native binaries for legacy libsolc versions with a small .NET lib platform path resolving method.
+Includes version: v0.4.20, v0.4.21, v0.4.22, v0.4.23</Description>
+    <PackageProjectUrl>https://github.com/hosho/solc-build</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/hosho/solc-build/blob/master/LICENSE</PackageLicenseUrl>
+    <NoWarn>1591,1573</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <Version Condition="'$(VersionSuffix)' != ''">0.1.$(VersionSuffix)</Version>
+    <Version Condition="'$(VersionSuffix)' == ''">0.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <PackageReference Include="SourceLink.Embed.AllSourceFiles" Version="2.8.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <Target Name="PackTaskDependencies" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <_PackageFiles Include="$(OutputPath)/Native/**/*">
+        <BuildAction>Content</BuildAction>
+        <PackagePath>content/native/</PackagePath>
+      </_PackageFiles>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <None Update="Native\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+</Project>
