@@ -10,12 +10,13 @@
     <PackageTags>solidity solc libsolc ethereum</PackageTags>
     <Description>
       Native binaries for legacy libsolc versions with a small .NET lib providing native lib platform path resolving.
-      Includes version: v0.4.20, v0.4.21, v0.4.22, v0.4.23</Description>
+      Includes version: v0.4.20, v0.4.21, v0.4.22, v0.4.23
+    </Description>
     <PackageProjectUrl>https://github.com/hosho/SolcNet.Legacy</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/hosho/SolcNet.Legacy/blob/master/LICENSE</PackageLicenseUrl>
     <NoWarn>1591,1573</NoWarn>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <Version Condition="'$(VersionSuffix)' != ''">0.1.$(VersionSuffix)</Version>
     <Version Condition="'$(VersionSuffix)' == ''">0.1.0</Version>
@@ -39,5 +40,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <_PackageFiles Include="SolcNet.Legacy.targets">
+      <BuildAction>None</BuildAction>
+      <PackagePath>build/</PackagePath>
+    </_PackageFiles>
+  </ItemGroup>
+
 </Project>

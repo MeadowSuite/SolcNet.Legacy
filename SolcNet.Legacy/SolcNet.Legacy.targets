@@ -1,0 +1,11 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <SolcNetLegacyDirectory>$(MSBuildThisFileDirectory)/../../lib/netstandard2.0/SolcNet.Legacy.dll</SolcNetLegacyDirectory>
+  </PropertyGroup>
+
+  <Target Name="NotifySolcNetLegacy" BeforeTargets="BeforeBuild">
+    <Message Importance="High" Text="SolcNet.Legacy package installed and available for use" />
+  </Target>
+
+</Project>
