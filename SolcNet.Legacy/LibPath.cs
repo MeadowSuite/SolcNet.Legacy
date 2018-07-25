@@ -34,6 +34,25 @@ namespace SolcNet.Legacy
 
         static readonly Dictionary<(PlatInfo, SolcVersion), string> Cache = new Dictionary<(PlatInfo, SolcVersion), string>();
 
+        public static string GetLibPath(Version version)
+        {
+            var enumField = typeof(SolcVersion)
+                .GetFields()
+                .Select(field => new { Field = field, Attr = field.GetCustomAttribute<EnumMemberAttribute>() })
+                .Where(e => e.Attr != null)
+                .Where(e => version == Version.Parse(e.Attr.Value.TrimStart('v')))
+                .Select(e => e.Field)
+                .FirstOrDefault();
+
+            if (enumField == null)
+            {
+                throw new Exception($"Version {version} not found");
+            }
+
+            var solcVersion = (SolcVersion)enumField.GetValue(null);
+            return GetLibPath(solcVersion);
+        }
+
         /// <summary>
         /// Finds the full file path of the native solc library for the current operating system platform and architecture.
         /// </summary>
