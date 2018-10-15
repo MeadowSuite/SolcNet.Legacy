@@ -45,5 +45,15 @@ namespace SolcNet.Legacy.Test
             path = LibPath.GetLibPath(Version.Parse("0.4.23"));
             StringAssert.Contains(path, "v0.4.23");
         }
+
+        [TestMethod]
+        public void Resolve_v0_4_24()
+        {
+            var path = LibPath.GetLibPath(SolcVersion.v0_4_24);
+            StringAssert.Contains(path, "v0.4.24");
+
+            path = LibPath.GetLibPath(Version.Parse("0.4.24"));
+            StringAssert.Contains(path, "v0.4.24");
+        }
     }
 }
