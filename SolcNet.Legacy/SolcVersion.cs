@@ -17,6 +17,9 @@ namespace SolcNet.Legacy
         v0_4_23,
 
         [EnumMember(Value = "v0.4.24")]
-        v0_4_24
+        v0_4_24,
+
+        [EnumMember(Value = "v0.4.25")]
+        v0_4_25
     }
 }
